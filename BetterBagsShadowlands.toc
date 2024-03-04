@@ -1,0 +1,8 @@
+## Interface: 100100
+## Title: BetterBagsShadowlands
+## Version: 10.2-0
+## Notes: BetterBags filter plugin to create categories for Shadowlands items
+## Author: SpareSimian
+## Dependency: BetterBags
+
+Main.lua
