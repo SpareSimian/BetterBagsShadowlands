@@ -1,4 +1,4 @@
-## Interface: 100100
+## Interface: 100205
 ## Title: BetterBagsShadowlands
 ## Version: 10.2-0
 ## Notes: BetterBags filter plugin to create categories for Shadowlands items
