@@ -2,7 +2,7 @@ local addonName, addon = ...
 LibStub('AceAddon-3.0'):NewAddon(addon, addonName, 'AceConsole-3.0')
 
 -- required API to do tooltip scanning
-if not C_TooltipInfo or not C_TooltipInfo.GetItemByID then
+if not C_TooltipInfo or not C_TooltipInfo.GetOwnedItemByID then
   return
 end
 
@@ -43,7 +43,7 @@ categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
 
   -- addon:Print("Candidate for SL category " .. data.itemInfo.itemName)
 
-  local tooltipInfo = C_TooltipInfo.GetItemByID(data.itemInfo.itemID)
+  local tooltipInfo = C_TooltipInfo.GetOwnedItemByID(data.itemInfo.itemID)
   
   local text
   for k,v in pairs(tooltipInfo.lines) do
