@@ -77,9 +77,5 @@ categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
     end
   end
 
-  if data.containerInfo.hasLoot then
-    return L:G("Lootable")
-  end
-
   return nil
 end)
