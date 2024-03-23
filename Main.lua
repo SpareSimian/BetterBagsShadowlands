@@ -10,9 +10,6 @@ local bb = LibStub('AceAddon-3.0'):GetAddon("BetterBags")
 local categories = bb:GetModule('Categories')
 local L = bb:GetModule('Localization')
 
--- categories:AddItemToCategory(12345, L:G("My Category"))
--- categories:WipeCategory(L:G("My Category"))
-
 local function extractColoredText(text)
   local found, _, itemString = string.find(text, "|c%x%x%x%x%x%x%x%x(.+)|r")
   if found then
@@ -32,25 +29,30 @@ Stygia
 
 categories shared with other expansions:
 Champion Equipment
-Lootable
 
 ]]-- 
 
 categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
-  if data.itemInfo.expacID ~= LE_EXPANSION_SHADOWLANDS then
-    return nil
-  end
 
   -- addon:Print("Candidate for SL category " .. data.itemInfo.itemName)
 
   local tooltipInfo = C_TooltipInfo.GetOwnedItemByID(data.itemInfo.itemID)
   
-  local text
   for k,v in pairs(tooltipInfo.lines) do
     if v.type == 0 then
-      text = extractColoredText(v.leftText)
+    local text = extractColoredText(v.leftText)
       -- addon:Print(data.itemInfo.itemName .. " tooltip line: " .. text)
       if text then
+
+        -- this stuff isn't tagged by expansion so we have to catch it first
+        if string.find(v.leftText, "Companions") then
+          return L:G("Consumable - Champion Equipment")
+        end
+
+        if data.itemInfo.expacID ~= LE_EXPANSION_SHADOWLANDS then
+          return nil
+        end
+
         if "Anima" == text then
           return L:G("Consumable - Anima")
         end
@@ -59,9 +61,6 @@ categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
         end
         if string.find(v.leftText, "Conduit") then
           return L:G("Consumable - Conduits")
-        end
-        if string.find(v.leftText, "Companions") then
-          return L:G("Consumable - Champion Equipment")
         end
         if string.find(v.leftText, "Use: Gain %d+ Stygia") then
           return L:G("Consumable - Stygia")
