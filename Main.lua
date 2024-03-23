@@ -52,25 +52,19 @@ categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
       -- addon:Print(data.itemInfo.itemName .. " tooltip line: " .. text)
       if text then
         if "Anima" == text then
-          return L:G("Anima")
+          return L:G("Consumable - Anima")
         end
         if "Korthian Relics" == text then
-          return L:G("Korthian Relics")
+          return L:G("Consumable - Korthian Relics")
         end
-        if string.find(v.leftText, "learning all Conduits") then
-          return L:G("Conduits")
+        if string.find(v.leftText, "Conduit") then
+          return L:G("Consumable - Conduits")
         end
-        if string.find(v.leftText, "Discover an upgrade to a random Conduit") then
-          return L:G("Conduits")
-        end
-        if string.find(v.leftText, "(Potency|Enhanced|Finesse) Conduit") then
-          return L:G("Conduits")
-        end
-        if string.find(v.leftText, "Open your Companions page and use this item to grant") then
-          return L:G("Champion Equipment")
+        if string.find(v.leftText, "Companions") then
+          return L:G("Consumable - Champion Equipment")
         end
         if string.find(v.leftText, "Use: Gain %d+ Stygia") then
-          return L:G("Stygia")
+          return L:G("Consumable - Stygia")
         end
         -- addon:Print(data.itemInfo.itemName .. " NOMATCH: " .. v.leftText)
       end
