@@ -53,6 +53,9 @@ categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
           return nil
         end
 
+        -- generic category for expansion's "farm" stuff
+        local farm = "|cff00c0ffFarm|r"
+
         if "Anima" == text then
           return L:G("Consumable - Anima")
         end
@@ -64,6 +67,17 @@ categories:RegisterCategoryFunction("ShadowlandsFilter", function (data)
         end
         if string.find(v.leftText, "Use: Gain %d+ Stygia") then
           return L:G("Consumable - Stygia")
+        end
+        -- Ardenweald farming
+        if string.find(v.leftText, "Queen's Conservatory") then
+          return L:G(farm)
+        end
+        -- Maldraxus farming
+        if string.find(v.leftText, "Butchers Block") then
+          return L:G(farm)
+        end
+        if string.find(v.leftText, "Abominable Stitching") then
+          return L:G(farm)
         end
         -- addon:Print(data.itemInfo.itemName .. " NOMATCH: " .. v.leftText)
       end
