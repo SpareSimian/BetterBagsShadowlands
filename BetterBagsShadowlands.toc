@@ -1,6 +1,6 @@
-## Interface: 100205
+## Interface: 100207
 ## Title: BetterBagsShadowlands
-## Version: 10.2.6-3
+## Version: 10.2.7-0
 ## Notes: BetterBags filter plugin to create categories for Shadowlands items
 ## Author: SpareSimian
 ## Dependency: BetterBags
